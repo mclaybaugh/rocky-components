@@ -1,0 +1,127 @@
+<html>
+
+<title>Accordion</title>
+
+<style>
+.accordion__item {
+	border-bottom: 1px solid lightgray;
+}
+.accordion__heading {
+	cursor: pointer;
+	padding: 18px 0;
+	width: 100%;
+	text-align: left;
+	border: none;
+	background-color: white;
+	transition: 0.2s;
+}
+.accordion__heading:before {
+	content: '\02795'; /* Unicode character for "plus" sign (+) */
+	padding: .1em .2em;
+	margin-right: 1em;
+	color: white;
+	float: left;
+}
+.accordion__heading--active:before {
+	content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+.accordion__heading:hover {
+	color: #076cb4;
+}
+.accordion__content {
+	padding: 0;
+	margin: 0;
+	background-color: white;
+	height: 0;
+	overflow: hidden;
+	transition: height .2s ease-out;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  accordionHeaders();
+});
+function accordionHeaders() {
+  var headings = document.querySelectorAll('.accordion__heading');
+  Array.prototype.forEach.call(headings, function (heading) {
+    heading.addEventListener('click', accordionToggle);
+  });
+}
+function accordionToggle(event) {
+  event.target.classList.toggle('accordion__heading--active');
+  var panel = event.target.nextElementSibling;
+  if (panel.style.height && panel.style.height[0] !== '0') {
+    panel.style.height = '0';
+  } else {
+    panel.style.height = panel.scrollHeight + 16 + 'px';
+  }
+}
+</script>
+
+<body>
+
+<h1>Accordion</h1>
+
+
+
+<div class="accordion__item">
+<button class="accordion__heading">Here is the first heading</button>
+<p class="accordion__content">
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac facilisis justo, a ornare ex. Donec in pharetra nisl, quis finibus mauris. Maecenas sit amet orci ac sem elementum ornare. Suspendisse blandit aliquam sapien, eu blandit nisi vulputate quis. In purus mauris, vehicula vitae pretium id, tincidunt in enim. Sed ut laoreet tellus. Aenean fermentum dui et diam semper tempus. Ut pretium ex et scelerisque scelerisque. Fusce tempor dui a quam dignissim cursus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. 
+</p>
+</div>
+
+
+
+<div class="accordion__item">
+<button class="accordion__heading">Lorem ipsum dolor sit amet</button>
+<div class="accordion__content">
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed lacinia quam. Integer eleifend feugiat sapien vel volutpat. Fusce posuere odio id dolor aliquam porttitor. Proin vitae pharetra eros, quis dapibus purus. Vivamus bibendum auctor lorem, non blandit orci laoreet at. Mauris tincidunt tincidunt metus quis sodales. Sed mattis odio non diam congue vestibulum. Nam et aliquam leo. Ut aliquet lectus ut nulla egestas, sit amet aliquam est gravida. In accumsan rutrum enim, eu pharetra nulla vestibulum at. Vivamus vehicula justo a eros egestas mollis. Nam non tempor neque. Donec varius porta enim, eget sollicitudin mi gravida in.
+<p>Vestibulum et libero ac metus ultricies rhoncus. Proin a aliquam nisi, in eleifend nulla. Pellentesque eu dolor mollis, elementum nibh sit amet, malesuada elit. Sed neque mauris, blandit vel massa vel, cursus iaculis nibh. Cras consectetur arcu sem, a tempor metus molestie sit amet. Mauris commodo hendrerit malesuada. Mauris ac erat finibus, pellentesque est vitae, posuere risus.</p>
+<p>Integer vitae posuere odio. Proin ligula mauris, consectetur sit amet auctor id, pellentesque mattis magna. In laoreet imperdiet leo sit amet placerat. Cras dolor elit, euismod a aliquet eu, convallis at odio. Nullam erat justo, rutrum id elit sit amet, vestibulum molestie turpis. In felis arcu, laoreet at odio ac, egestas mattis orci. Donec interdum quam enim, vitae dignissim sapien accumsan ac. Vivamus condimentum urna id ex euismod maximus eu sed magna. Ut venenatis tortor risus, maximus rhoncus magna blandit ut. Donec varius sapien in tellus fringilla, id consectetur enim tempor. Donec viverra erat in vehicula blandit. Nulla non felis at libero egestas iaculis. Sed lectus nulla, dictum ac quam in, vulputate dictum dolor. Phasellus finibus molestie nibh, non vulputate velit commodo vitae. Vestibulum non posuere diam. Quisque ut est non lacus lobortis pellentesque vitae ac justo.</p>
+<p>Mauris aliquam eros volutpat lacus sodales lobortis. Suspendisse aliquam tellus in leo luctus ultrices. Integer vitae tincidunt sem. In ornare odio eget quam posuere tempor. In hac habitasse platea dictumst. Vivamus gravida velit ut tristique vehicula. Praesent accumsan efficitur lectus eget lacinia. Cras convallis interdum mi, vel pellentesque velit laoreet vitae. Duis id feugiat augue, vel dictum felis. Quisque venenatis turpis vel est varius porttitor. Sed sollicitudin tellus sit amet commodo iaculis. Sed gravida ex id nulla placerat aliquam. Proin tincidunt augue purus, sit amet consequat sapien congue ut. Etiam bibendum metus sit amet libero pharetra egestas in commodo ex.</p>
+<p>Proin in tincidunt mi. Quisque ut turpis et lectus sagittis lobortis in a tellus. Nullam accumsan sem sed neque ullamcorper, at ornare diam tempor. Ut commodo ipsum nec dui venenatis fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Curabitur ut aliquam sapien. Nam a viverra sem, vel pulvinar odio. In vestibulum nulla dapibus, condimentum lorem vel, pellentesque odio. Nunc ut dolor eu eros scelerisque ornare at ac erat. Morbi id risus placerat, mattis nunc a, congue augue. Suspendisse cursus in sapien sit amet semper. Pellentesque accumsan lacinia tortor. Donec mattis quis felis suscipit auctor.</p>
+</div>
+</div>
+
+
+
+<div class="accordion__item">
+<button class="accordion__heading">Lorem ipsum dolor sit amet</button>
+<p class="accordion__content">
+  Phasellus cursus neque a libero consequat, eget tincidunt enim maximus. Duis luctus facilisis ipsum ac condimentum. Ut vel mi ut dui aliquet maximus. Nulla facilisi. Aliquam vel mauris at mi tempus maximus. Nam sodales sem eros. Sed enim odio, molestie vel pellentesque in, blandit vitae felis. Duis sed ipsum orci. Curabitur arcu justo, consectetur quis est in, dictum semper ipsum.
+</p>
+</div>
+</div>
+
+
+
+<div class="accordion__item">
+<button class="accordion__heading">Lorem ipsum dolor sit amet</button>
+<p class="accordion__content">
+  Phasellus cursus neque a libero consequat, eget tincidunt enim maximus. Duis luctus facilisis ipsum ac condimentum. Ut vel mi ut dui aliquet maximus. Nulla facilisi. Aliquam vel mauris at mi tempus maximus. Nam sodales sem eros. Sed enim odio, molestie vel pellentesque in, blandit vitae felis. Duis sed ipsum orci. Curabitur arcu justo, consectetur quis est in, dictum semper ipsum.
+</p>
+</div>
+
+
+
+<div class="accordion__item">
+<button class="accordion__heading">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac facilisis justo</button>
+<p class="accordion__content">
+  Phasellus cursus neque a libero consequat, eget tincidunt enim maximus. Duis luctus facilisis ipsum ac condimentum. Ut vel mi ut dui aliquet maximus. Nulla facilisi. Aliquam vel mauris at mi tempus maximus. Nam sodales sem eros. Sed enim odio, molestie vel pellentesque in, blandit vitae felis. Duis sed ipsum orci. Curabitur arcu justo, consectetur quis est in, dictum semper ipsum.
+</p>
+</div>
+
+
+
+<div class="accordion__item">
+<button class="accordion__heading">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</button>
+<p class="accordion__content">
+  Phasellus cursus neque a libero consequat, eget tincidunt enim maximus. Duis luctus facilisis ipsum ac condimentum. Ut vel mi ut dui aliquet maximus. Nulla facilisi. Aliquam vel mauris at mi tempus maximus. Nam sodales sem eros. Sed enim odio, molestie vel pellentesque in, blandit vitae felis. Duis sed ipsum orci. Curabitur arcu justo, consectetur quis est in, dictum semper ipsum. 
+</p>
+</div>
+
+</body>
+
+</html>
