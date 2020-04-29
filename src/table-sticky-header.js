@@ -81,12 +81,10 @@ document.addEventListener('DOMContentLoaded', function () {
     if (table.style.display === 'none') return;
     var tableOffset = offset(table).top - drupalTop();
     if (pageYOffset > tableOffset) {
-      // don't make fixed if already fixed
       if (state === 'fixed') return;
       state = 'fixed';
       makeStickyHeader(table);
     } else {
-      // don't unfix if already not fixed
       if (state === 'notfixed') return;
       state = 'notfixed';
       removeStickyHeader();

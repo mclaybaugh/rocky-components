@@ -1,10 +1,11 @@
 <?php
 
-/* 
- * Removes log files older than a certain date
- * 
- * Example location: /var/log/sites/$INSTANCE/logs/$SERVER
- * 
+/**
+ * @file
+ * Removes log files older than a certain date.
+ *
+ * Example location: /var/log/sites/$INSTANCE/logs/$SERVER.
+ *
  * Example filenames
  *   - access.log
  *   - access.log-20190223.gz
@@ -14,7 +15,6 @@
 $instance = $argv[1];
 $server = $argv[2];
 $directory = '/var/log/sites/' . $instance . '/logs/' . $server;
-#$directory = '/Users/michaelclaybaugh/repositories/log-cleanup/exampledir';
 $files = scandir($directory);
 
 if ($files === FALSE) {
@@ -34,17 +34,24 @@ foreach ($filesToRemove as $file) {
 
 echo "Finished removing " . count($filesToRemove) . " files.\n";
 
+/**
+ * Returns boolean, checks for "-########".
+ */
 function has_date($name) {
   return preg_match('/-[0-9]{8}/', $name);
 }
 
+/**
+ * Returns boolean, compares dates as integers.
+ */
 function is_old($name) {
   $match = [];
   preg_match('/[0-9]{8}/', $name, $match);
   global $_referenceDate;
   if ((int) $match[0] < (int) $_referenceDate) {
     return TRUE;
-  } else {
+  }
+  else {
     return FALSE;
   }
 }
