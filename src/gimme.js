@@ -3,7 +3,7 @@
  * @param {String|Element|Array} selector
  * @param {Function} func
  */
-function gimme(selector, func) {
+function gimmeAll(selector, func) {
     const els = getElementArray(selector);
     for (let el of els) {
         func(el);
